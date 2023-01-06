@@ -2,13 +2,13 @@
 /**
  * Initial setup
  *
- * @author      Rens Manders
- * @since       23/03/2022
+ * @author      Jay Schmidt
+ * @since       06/01/2022
  * @package
  *
  */
 
-class UptopSetup {
+class GalileoSetup {
 
 	protected $defaultSettings = [
 		'woocommerce' => false,
