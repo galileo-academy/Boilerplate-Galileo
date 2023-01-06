@@ -6,19 +6,12 @@
   "scripts": {
     "watch": "gulp sass:watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PixxelsRotterdam/Boilerplate.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PixxelsRotterdam/Boilerplate/issues"
-  },
-  "homepage": "https://github.com/PixxelsRotterdam/Boilerplate#readme",
+  "homepage": "https://github.com/galileo-academy/Boilerplate-Galileo#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.4",
-    "browser-sync": "^2.27.9",
+    "browser-sync": "^2.27.11",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.1.5",
     "gulp": "^4.0.2",
