@@ -2,8 +2,8 @@
 /**
  * Initial setup
  *
- * @author      Jay Schmidt
- * @since       06/01/2022
+ * @author      Rens Manders van Pixxels
+ * @since       23/03/2022 
  * @package
  *
  */
