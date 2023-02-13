@@ -60,6 +60,9 @@ class GalileoSetup {
 		// Scripts
 		wp_enqueue_script('child-theme-main', get_template_directory_uri() . '/assets/js/app.js', array(), false, true);
     	wp_localize_script( 'child-theme-main', 'params', array( 'ajaxurl' => admin_url('admin-ajax.php')) );
+
+		// Filters        
+		add_filter('script_loader_tag', [$this, 'registerModules'], 10, 3);
 	}
 
 	public function registerNavigations() {
@@ -99,4 +102,12 @@ class GalileoSetup {
 		acf_update_setting('google_api_key', $this->settings['acf_google_api']);
 	}
 	
+	public function registerModules($tag, $handle, $src) {
+		if( 'child-theme-main' !== $handle ) {
+			return $tag;
+		}else{
+		$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+			return $tag;
+		}
+	}
 }
