@@ -106,7 +106,7 @@ class GalileoSetup {
 		if( 'child-theme-main' !== $handle ) {
 			return $tag;
 		}else{
-		$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
 			return $tag;
 		}
 	}
