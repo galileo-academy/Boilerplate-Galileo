@@ -1,18 +1,33 @@
 'use strict';
 
+// Load Gulp
 var gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-var concat = require('gulp-concat');
 
-sass.compiler = require('node-sass');
+// Load Sass Functions
+var sass = require('gulp-sass')(require('sass'));
+var rename = require( 'gulp-rename' );
+var autoprefixer = require( 'gulp-autoprefixer' );
+var concat = require( 'gulp-concat' )
+var sourcemaps = require( 'gulp-sourcemaps' );
 
-gulp.task('css-compile', function (path) {
-   return gulp.src('./assets/**/*.scss')
-   .pipe(concat('app.scss'))
-   .pipe(sass().on('error', sass.logError))
-   .pipe(gulp.dest('./assets/css/'));
+gulp.task('css-compile', async function() {
+  gulp.src( './assets/src/scss/**/*.scss' )
+      .pipe(concat('main.scss'))
+      .pipe( sourcemaps.init())
+      .pipe( sass({
+          errorLogToConsole: true,
+          outputStyle: 'compressed'
+      }) )
+      .on( 'error', console.error.bind( console ) )
+      .pipe( autoprefixer({
+          overrideBrowserslist: ['last 2 versions'],
+          cascade: false
+      }) )
+      .pipe( rename( { suffix: '.min' } ) )
+      .pipe( sourcemaps.write( './' ) )
+      .pipe( gulp.dest( './assets/dist/css/' ) );
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./assets/**/*.scss', gulp.series('css-compile'));
+  gulp.watch('./assets/src/scss/**/*.scss', gulp.series('css-compile'));
 });

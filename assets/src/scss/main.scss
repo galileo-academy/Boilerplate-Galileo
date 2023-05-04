@@ -1,0 +1,7 @@
+@import './configuration/variables.scss';
+@import './configuration/fonts.scss';
+
+h1 {
+    background-color: $primary;
+    transition: all 1s ease-in-out;
+}
