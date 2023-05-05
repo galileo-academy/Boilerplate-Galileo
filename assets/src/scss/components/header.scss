@@ -1,0 +1,7 @@
+@import './configuration/variables.scss';
+
+header {
+    max-width: 1200px;
+    margin: auto;
+    background-color: $primary;
+}
