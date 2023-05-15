@@ -55,7 +55,7 @@ class GalileoSetup {
 
 	public function enqueueDependencies() {
 		// Styles
-		wp_enqueue_style('child-theme-main', get_template_directory_uri() .'/assets/dist/css/main.min.css', array());
+		wp_enqueue_style('child-theme-main', get_template_directory_uri() .'/assets/css/main.min.css', array());
 
 		// Scripts
 		wp_enqueue_script('child-theme-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);

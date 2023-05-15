@@ -10,8 +10,9 @@ var autoprefixer = require( 'gulp-autoprefixer' );
 var concat = require( 'gulp-concat' )
 var sourcemaps = require( 'gulp-sourcemaps' );
 
+// Sass task
 gulp.task('css-compile', async function() {
-  gulp.src( './assets/src/scss/**/*.scss' )
+  gulp.src( './assets/scss/**/*.scss' )
       .pipe(concat('main.scss'))
       .pipe( sourcemaps.init())
       .pipe( sass({
@@ -25,9 +26,9 @@ gulp.task('css-compile', async function() {
       }) )
       .pipe( rename( { suffix: '.min' } ) )
       .pipe( sourcemaps.write( './' ) )
-      .pipe( gulp.dest( './assets/dist/css/' ) );
+      .pipe( gulp.dest( './assets/css/' ) );
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./assets/src/scss/**/*.scss', gulp.series('css-compile'));
+  gulp.watch('./assets/scss/**/*.scss', gulp.series('css-compile'));
 });
