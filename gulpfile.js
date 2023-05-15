@@ -21,7 +21,7 @@ var browserify = require("browserify");
 
 // Sass task
 gulp.task('css-compile', function(done) {
-  gulp.src( './assets/src/scss/**/*.scss' )
+  gulp.src( './src/scss/**/*.scss' )
       .pipe(concat('main.scss'))
       .pipe( sourcemaps.init())
       .pipe( sass({
@@ -35,14 +35,14 @@ gulp.task('css-compile', function(done) {
       }) )
       .pipe( rename( { suffix: '.min' } ) )
       .pipe( sourcemaps.write( './' ) )
-      .pipe( gulp.dest( './assets/dist/css/' ) );
+      .pipe( gulp.dest( './dist/css/' ) );
       done();
 });
 
 // JS task
 gulp.task('js-compress', function() {
   return browserify({
-      entries: ["assets/src/js/main.js"]
+      entries: ["src/js/main.js"]
   })
   .transform(babelify.configure({
       presets : ["@babel/preset-env" ]
@@ -53,10 +53,10 @@ gulp.task('js-compress', function() {
   .pipe(sourcemaps.init())
   .pipe(uglify())
   .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest("./assets/dist/js/"));
+  .pipe(gulp.dest("./dist/js/"));
 });
 
 gulp.task('watch', async function() {
-  gulp.watch('./assets/src/scss/**/*.scss', gulp.series('css-compile'));
-  gulp.watch('./assets/src/js/**/*.js', gulp.series('js-compress'));
+  gulp.watch('./src/scss/**/*.scss', gulp.series('css-compile'));
+  gulp.watch('./src/js/**/*.js', gulp.series('js-compress'));
 });
