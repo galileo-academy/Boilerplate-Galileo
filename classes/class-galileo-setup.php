@@ -2,8 +2,8 @@
 /**
  * Initial setup
  *
- * @author      Rens Manders van Pixxels
- * @since       23/03/2022 
+ * @author      Jay van Galileo Academy
+ * @since       23/05/2023 
  * @package
  *
  */
