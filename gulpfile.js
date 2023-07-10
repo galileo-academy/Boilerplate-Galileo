@@ -3,16 +3,25 @@
 // Load Gulp
 var gulp = require('gulp');
 
-// Load Sass Functions
-var sass = require('gulp-sass')(require('sass'));
+// General functions
+var concat = require( 'gulp-concat' );
 var rename = require( 'gulp-rename' );
-var autoprefixer = require( 'gulp-autoprefixer' );
-var concat = require( 'gulp-concat' )
 var sourcemaps = require( 'gulp-sourcemaps' );
 
+// Load Sass Functions
+var sass = require('gulp-sass')(require('sass'));
+var autoprefixer = require( 'gulp-autoprefixer' );
+
+// JS Functions
+var babelify = require('babelify');
+var uglify = require('gulp-uglify');
+var buffer = require("vinyl-buffer");
+var source = require("vinyl-source-stream");
+var browserify = require("browserify");
+
 // Sass task
-gulp.task('css-compile', async function() {
-  gulp.src( './assets/scss/**/*.scss' )
+gulp.task('css-compile', function(done) {
+  gulp.src( './src/scss/**/*.scss' )
       .pipe(concat('main.scss'))
       .pipe( sourcemaps.init())
       .pipe( sass({
@@ -26,9 +35,28 @@ gulp.task('css-compile', async function() {
       }) )
       .pipe( rename( { suffix: '.min' } ) )
       .pipe( sourcemaps.write( './' ) )
-      .pipe( gulp.dest( './assets/css/' ) );
+      .pipe( gulp.dest( './dist/css/' ) );
+      done();
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./assets/scss/**/*.scss', gulp.series('css-compile'));
+// JS task
+gulp.task('js-compress', function() {
+  return browserify({
+      entries: ["src/js/main.js"]
+  })
+  .transform(babelify.configure({
+      presets : ["@babel/preset-env" ]
+  }))
+  .bundle()
+  .pipe(source("main.js"))
+  .pipe(buffer())
+  .pipe(sourcemaps.init())
+  .pipe(uglify())
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest("./dist/js/"));
+});
+
+gulp.task('watch', async function() {
+  gulp.watch('./src/scss/**/*.scss', gulp.series('css-compile'));
+  gulp.watch('./src/js/**/*.js', gulp.series('js-compress'));
 });
