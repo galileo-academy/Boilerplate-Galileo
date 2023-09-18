@@ -2,7 +2,7 @@
 /**
  * Initial setup
  *
- * @author      Jay van Galileo Academy
+ * @author      Rens Manders en Jay van Galileo Academy
  * @since       23/05/2023 
  * @package
  *
