@@ -1,0 +1,17 @@
+{
+    "host": "185.104.30.180",
+    "username": "jay@tailwind-theme.dedi0233.zxcs.nl",
+    "password": "nA97MFX8pNXgMqfwKwmq",
+    "remotePath": "./public_html/wp-content/themes/Boilerplate-Galileo",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": true,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode",
+        "node_modules"
+    ]
+}

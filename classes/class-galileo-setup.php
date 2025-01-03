@@ -28,6 +28,7 @@ class GalileoSetup {
 		
 		add_action( 'wp_enqueue_scripts', [$this, 'enqueueDependencies'], 99 );
 		add_action( 'init', [$this, 'registerNavigations'] );
+		add_action( 'init', [$this, 'showAdminBar'] );
 
 		if($settings['acf_google_api'] != '') {
 			add_action('acf/init', [$this, 'addGoogleMaps']);
@@ -55,11 +56,11 @@ class GalileoSetup {
 
 	public function enqueueDependencies() {
 		// Styles
-		wp_enqueue_style('child-theme-main', get_template_directory_uri() .'/dist/css/main.min.css', array());
+		wp_enqueue_style('galileo-css', get_template_directory_uri() .'/dist/output.css', array());
 
 		// Scripts
-		wp_enqueue_script('child-theme-main', get_template_directory_uri() . '/dist/js/main.js', array(), false, true);
     	wp_localize_script( 'child-theme-main', 'params', array( 'ajaxurl' => admin_url('admin-ajax.php')) );
+		wp_enqueue_script('galileo-js', get_template_directory_uri() .'/js/main.js', array(), null, true);
 
 		// Filters        
 		add_filter('script_loader_tag', [$this, 'registerModules'], 10, 3);
@@ -103,11 +104,19 @@ class GalileoSetup {
 	}
 	
 	public function registerModules($tag, $handle, $src) {
-		if( 'child-theme-main' !== $handle ) {
+		if( 'galileo-js' !== $handle ) {
 			return $tag;
 		}else{
 			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
 			return $tag;
 		}
+	}
+
+	public function showAdminBar() {
+
+		if(is_user_logged_in()) {
+			add_filter( 'show_admin_bar', '__return_true' , 1000 );
+		}
+		
 	}
 }

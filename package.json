@@ -1,40 +1,8 @@
 {
-  "name": "boilerplate-galileo",
-  "version": "1.0.0",
-  "description": "Boilerplate voor Galileo Academy",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/galileo-academy/Boilerplate-Galileo.git"
-  },
-  "keywords": [
-    "gulpfile",
-    "js",
-    "css",
-    "scss"
-  ],
-  "author": "Jay Schmidt",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/galileo-academy/Boilerplate-Galileo/issues"
-  },
-  "homepage": "https://github.com/galileo-academy/Boilerplate-Galileo#readme",
   "devDependencies": {
-    "@babel/preset-env": "^7.24.4",
-    "babelify": "^10.0.0",
-    "browserify": "^17.0.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.62.1",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^3.4.17"
   }
 }

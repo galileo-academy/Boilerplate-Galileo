@@ -1,1 +1,0 @@
-Create your Javascript Classes in here.
