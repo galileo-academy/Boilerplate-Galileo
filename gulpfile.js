@@ -25,6 +25,7 @@ gulp.task('css-compile', function(done) {
       .pipe(concat('main.scss'))
       .pipe( sourcemaps.init())
       .pipe( sass({
+          silenceDeprecations: ['import', 'legacy-js-api'],
           errorLogToConsole: true,
           outputStyle: 'compressed'
       }) )
